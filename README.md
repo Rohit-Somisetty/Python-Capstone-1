@@ -6,13 +6,44 @@ A comprehensive Python-based real estate data processing pipeline for data inges
 
 This project implements a complete data science pipeline for real estate market analysis, featuring automated data cleaning, statistical analysis, and visualization capabilities.
 
+
 ## Features
 
 - **Data Ingestion**: Load real estate data from CSV files
 - **Data Cleaning**: Handle missing values, outliers, and invalid entries
 - **Statistical Analysis**: Generate comprehensive market insights
-- **Data Visualization**: Create charts and graphs for market trends
+- **Advanced Analysis**: Calculate price per square foot, property age, and more
+- **Data Visualization**: Create charts and graphs for market trends, including price distributions, top locations, and price trends
 - **Export Capabilities**: Save cleaned datasets for further analysis
+## Advanced Analysis & Visualization
+
+This project includes two extensible classes for advanced data analysis and visualization:
+
+### Analysis Class
+- Takes a cleaned DataFrame as input
+- Methods:
+   - `calculate_price_per_sqft()`: Adds a `Price_per_sqft` column
+   - `calculate_property_age()`: Adds a `Property_Age` column
+
+### Visualization Class (inherits from Analysis)
+- Generates visualizations using matplotlib/seaborn
+- Methods:
+   - `plot_price_distribution(property_type=None)`: Boxplot of price per sqft by property type (polymorphic for any type)
+   - `plot_top_locations(top_n=5)`: Barplot of top N locations by property count
+   - `plot_price_trends()`: Line chart of average price by year and scatter plot of price per sqft vs. size
+
+#### Example Usage
+```python
+analysis = Analysis(cleaned_data)
+df_with_price = analysis.calculate_price_per_sqft()
+df_with_age = analysis.calculate_property_age()
+
+viz = Visualization(df_with_age)
+viz.plot_price_distribution()  # All property types
+viz.plot_price_distribution(property_type='Apartment')  # Specific type
+viz.plot_top_locations(top_n=5)
+viz.plot_price_trends()
+```
 
 ## Project Structure
 
@@ -96,9 +127,10 @@ The pipeline processes real estate data with the following features:
 4. **Visualization**: Create comprehensive charts and graphs
 5. **Export**: Save cleaned datasets in CSV format
 
+
 ## Results
 
 - **Data Quality**: 99.6% retention rate after cleaning
-- **Insights**: Property type distribution, price analysis by location and type
-- **Visualizations**: Price distributions, correlation matrices, market trends
+- **Insights**: Property type distribution, price analysis by location and type, price per sqft, property age, top locations
+- **Visualizations**: Price distributions, boxplots, barplots, line charts, scatter plots, correlation matrices, market trends
 
