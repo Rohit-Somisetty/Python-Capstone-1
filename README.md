@@ -102,19 +102,3 @@ The pipeline processes real estate data with the following features:
 - **Insights**: Property type distribution, price analysis by location and type
 - **Visualizations**: Price distributions, correlation matrices, market trends
 
-## Requirements
-
-- Python 3.8+
-- pandas >= 1.5.0
-- numpy >= 1.21.0
-- matplotlib >= 3.5.0
-- seaborn >= 0.11.0
-- jupyter >= 1.0.0
-
-## License
-
-This project is available for educational purposes.
-
-## Author
-
-Real Estate Data Analysis Team
